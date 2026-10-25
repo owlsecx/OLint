@@ -18,13 +18,18 @@
 
 ## 📌 Overview
 
-Scan source code files for dangerous patterns,
+OLint is a static code security analyzer that scans source files for dangerous patterns, potential vulnerabilities, and bad practices. It uses the Python standard library only and writes JSON, CSV, and TXT results under a configurable output directory.
 
 ---
 
 ## ✨ Features
 
-- Static Code Security Analyzer
+- Scan a single file (`--file`) or a folder (`--folder`) with optional recursive walk
+- Severity filter via `--severity` (default INFO)
+- Detects dangerous patterns, possible hardcoded secrets, and high-entropy string literals
+- Exclude paths with repeatable `--exclude` globs
+- Saves JSON, CSV, and TXT reports (each togglable) under `--output`
+- Quiet and no-color modes for scripting and CI-friendly output
 
 ---
 
@@ -38,7 +43,10 @@ Scan source code files for dangerous patterns,
 ## 🚀 Usage
 
 ```bash
-./OLint
+./OLint --file app.py
+./OLint --folder ./src --severity WARNING --exclude '*/vendor/*'
+./OLint --folder . --output olint_results --no-color
+./OLint --help
 ```
 
 ---
